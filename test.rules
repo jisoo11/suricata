@@ -1,0 +1,62 @@
+###################################
+
+alert tcp any any -> any 80 (msg:"gilgil rule"; content:"GET /"; content:"Host: www.gilgil.net"; sid:10001; rev:1;)
+alert tcp any any -> any 80 (msg:"naver rule"; content:"GET /"; content:"Host: www.naver.com"; sid:10002; rev:1;)
+alert tcp any any -> any 80 (msg:"avnana rule"; content:"GET /"; content:"Host: avnana.com"; sid:10003; rev:1;)
+alert tcp any any -> any 80 (msg:"snoopspy rule"; content:"GET /"; content:"Host: www.snoopspy.com"; sid:10004; rev:1;)
+alert tcp any any -> any 80 (msg:"snoopspyDown rule"; content:"GET /download"; content:"Host: www.snoopspy.com"; sid:10005; rev:1;)
+
+###################################
+
+# alert tcp any any -> any any (msg:"alert kitribob wiki"; content:"GET /wiki HTTP"; content:"Host: kitribob.wiki/wiki/"; sid:10006; rev:1;) ##
+alert tcp any any -> any any (msg:"alert ks8282"; content:"GET / HTTP/1.1"; content:"Host: ks8282.com"; sid:10007; rev:1;)
+alert tcp any any -> any any (msg:"alert fake naver_naevr"; content:"GET / HTTP/1.1"; content:"Host: naevr.com"; sid:10008; rev:1;)
+# alert tcp any any -> any any (msg:"alert fake naver_naver6"; content:"GET / HTTP/1.1"; content:"Host: naver6.com"; sid:10009; rev:1;)
+alert tcp any any -> any any (msg:"alert fake naver_naver6"; content:"GET / HTTP"; content:"Host: www.naver6.com"; sid:100015; rev:1;)
+alert tcp any any -> any any (msg:"alert pornpros"; content:"GET / HTTP/1.1"; content:"Host: pornpros.com"; sid:10010; rev:1;)
+# alert tcp any any -> any any (msg:"alert gilgil streaming"; content:"GET /streaming/test.mp4 HTTP"; content:"Host: test.gilgil.net/streaming/test.mp4"; sid:10014; rev:1;)
+alert tcp any any -> any any (msg:"alert minjok.com"; content:"GET / HTTP/1.1"; content:"Host: minjok.com"; sid:10019; rev:1;)
+
+alert tcp any any -> any 80 (msg:"alert tcp fake naver"; content:"GET / HTTP/1.1"; content:"Host: www.naver.cm"; sid:10023; rev:1;)
+alert tcp any any -> any 80 (msg:"alert tcp ryomyong"; content:"GET / HTTP/1.1"; content:"Host: www.ryomyong.com"; sid:10024; rev:1;)
+alert tcp any any -> any 80 (msg:"alert tcp sedisk"; content:"GET / HTTP/1.1"; content:"Host: sedisk.com"; sid:10025; rev:1;)
+alert tcp any any -> any 80 (msg:"alert tcp sk386"; content:"GET / HTTP/1.1"; content:"Host: www.sk386.com"; sid:10026; rev:1;)
+alert tcp any any -> any 80 (msg:"alert tcp tcosc"; content:"GET / HTTP/1.1"; content:"Host: www.tcosc.net"; sid:10027; rev:1;)
+alert tcp any any -> any 80 (msg:"alert tcp torenzoa"; content:"GET / HTTP/1.1"; content:"Host: www.torenzoa.net"; sid:10028; rev:1;)
+alert tcp any any -> any 80 (msg:"alert tcp umj262"; content:"GET / HTTP/1.1"; content:"Host: www.umj262.com"; sid:10029; rev:1;)
+alert tcp any any -> any 80 (msg:"alert tcp urimnzokkiri"; content:"GET / HTTP/1.1"; content:"Host: www.uriminzokkiri.com"; sid:10030; rev:1;)
+
+# alert udp any 53 -> any any (msg:"winclub88"; content:"GET / HTTP/1.1"; content:"Host: www.www.winclub88.net"; sid:10031; rev:1;)
+
+#####################################
+
+alert udp 192.168.8.2 53 -> any any (msg:"graphgame DNS response_content"; reference:url,graphgame.net; content:" graphgame.net"; sid:12345; rev:1;)
+# alert udp 192.168.8.2 53 -> any any (msg:"graphgame DNS query_reference"; reference:url,graphgame.net; sid:10035; rev:1;)
+# alert udp 192.168.8.2 53 -> any any (msg:"graphgame DNS query_reference"; sid:10035; rev:1;)
+alert udp $HOME_NET any -> any 53 (msg:"graphgame DNS query"; content:"|67 72 61 70 68 67 61 6d 65 03 6e 65 74 00 00 01|"; sid:10035; rev:1;)
+
+
+#####################################
+
+alert tcp any any -> any 80 (msg:"mujige53770_withoutHTTPS"; content:"GET / HTTP/1.1"; content:"Host: mujige53770.wixsite.com"; sid:10033; rev:1;)
+# when i just only access by url without https://
+
+alert udp $HOME_NET any -> any 53 (msg:"mujige53770 DNS query"; content:"|6d 75 6a 69 67 65 35 33 37 37 30 07 77 69 78 73 69 74 65 03 63 6f 6d 00 00 01|"; sid:10036; rev:1;)
+
+#####################################
+
+# alert udp $HOME_NET any -> any 53 (msg:"alert https://sex.com DNS query"; content:"|73 65 78 03 63 6f 6d 00 00 01|"; sid:10037; rev:1;)
+alert udp $HOME_NET any -> any 53 (msg:"alert https://sex.com DNS query"; content:"|77 77 77 03 73 65 78 03 63 6f 6d 00 00 01|"; sid:10038; rev:1;)
+
+#####################################
+
+# alert udp $HOME_NET any -> any 53 (msg:"alert https://webtoon.bamtoki.com/ DNS query"; content:"|77 77 77 03 77 65 62 74 6f 6f 6e 07 62 61 6d 74 6f 6b 69 03 63 6f 6d 00 00 01|"; sid:10039; rev:1;)
+# alert udp $HOME_NET any -> any 53 (msg:"alert webtoon.bamtoki DNS query"; content:"|77 65 62 74 6f 6f 6e 07 62 61 6d 74 6f 6b 69 03 63 6f 6d 00 00 01|"; sid:10045; rev:1;)
+
+# alert udp $HOME_NET any -> any 53 (msg:"alert https://www.mtbucks.com DNS query"; content:"|77 77 77 07 6d 74 62 75 63 6b 73 03 63 6f 6d 00 00 01|"; sid:10040; rev:1;)
+alert udp $HOME_NET any -> any 53 (msg:"alert https://www.mtbucks.com DNS query"; content:"|07 6d 74 62 75 63 6b 73 03 63 6f 6d 00 00 01|"; sid:10046; rev:1;)
+
+# alert udp $HOME_NET any -> any 53 (msg:"alert www.phishtank.com DNS query"; content:"|77 77 77 03 70 68 69 73 68 74 61 6e 6b 03 63 6f 6d 00 00 01|"; sid:10041; rev:1;)
+alert udp $HOME_NET any -> any 53 (msg:"alert https://www.phishtank.com DNS query"; content:"|70 68 69 73 68 74 61 6e 6b 03 63 6f 6d 00 00 01|"; sid:10048; rev:1;)
+
+
